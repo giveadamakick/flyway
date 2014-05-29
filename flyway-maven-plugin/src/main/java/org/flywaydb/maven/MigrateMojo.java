@@ -31,5 +31,22 @@ public class MigrateMojo extends AbstractFlywayMojo {
         }
 
         flyway.migrate();
+
+        getLog().info("Migration complete, now generating JOOQ classes");
+
+        getLog().info("jooqIncludes: " + jooqIncludes);
+        getLog().info("jooqExcludes: " + jooqExcludes);
+        getLog().info("jooqPackageName: " + jooqPackageName);
+        getLog().info("jooqDirectory: " + jooqDirectory);
+        getLog().info("url: " + url);
+
+        JooqSchemaGenerator.generate(
+                flyway.getDataSource().getConnection(),
+                jooqIncludes,
+                jooqExcludes,
+                jooqPackageName,
+                jooqDirectory);
+
+        getLog().info("Generation of JOOQ classes complete");
     }
 }

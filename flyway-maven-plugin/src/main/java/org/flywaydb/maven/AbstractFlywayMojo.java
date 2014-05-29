@@ -321,6 +321,26 @@ abstract class AbstractFlywayMojo extends AbstractMojo {
     private File configFile;
 
     /**
+     * @parameter
+     */
+    protected String jooqIncludes;
+
+    /**
+     * @parameter
+     */
+    protected String jooqExcludes;
+
+    /**
+     * @parameter
+     */
+    protected String jooqPackageName;
+
+    /**
+     * @parameter
+     */
+    protected String jooqDirectory;
+
+    /**
      * The id of the server tag in settings.xml (default: flyway-db)<br/>
      * The credentials can be specified by user/password or {@code serverId} from settings.xml<br>
      * <p>Also configurable with Maven or System Property: ${flyway.serverId}</p>
